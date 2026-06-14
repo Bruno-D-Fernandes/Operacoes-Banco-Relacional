@@ -37,14 +37,18 @@ INSERT INTO `role_table` (`role_name`)
 VALUES
 ("admin"),
 ("user"),
-("diretoctor");
+("director");
 
 INSERT INTO `roles_user_table` (`user_id`, `role_id`)
 VALUES 
 (1,1),
 (1,2),
-(1,3),
 (2,2),
 (3,2);
 
-SELECT * FROM `roles_user_table`;
+/* SELECT * FROM `roles_user_table`; */
+
+SELECT u.name_user, r.role_name
+FROM roles_user_table ru
+INNER JOIN user_table u ON ru.user_id = u.id
+INNER JOIN role_table r ON ru.role_id = r.id
